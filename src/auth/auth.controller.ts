@@ -13,6 +13,6 @@ export class AuthController {
         if(!user){
             throw new UnauthorizedException();
         }
-        return await this.authservice.login(user);
+        return this.authservice.login(user);
     }
 }
