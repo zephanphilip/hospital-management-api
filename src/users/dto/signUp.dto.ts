@@ -1,4 +1,4 @@
-import { IsEmail, IsIn, IsString, MinLength } from "class-validator";
+import { IsEmail, IsIn, IsNumber, IsOptional, IsString, MinLength } from "class-validator";
 
 export class SignUpDto{
     @IsString()
@@ -13,4 +13,16 @@ export class SignUpDto{
 
     @IsIn(['admin','doctor','patient'])
     role:string;
+
+    @IsOptional()
+    @IsNumber()
+    age:number;
+
+    @IsOptional()
+    @IsString()
+    gender:string;
+    
+    @IsOptional()
+    @IsNumber()
+    contactNumber:number;
 }

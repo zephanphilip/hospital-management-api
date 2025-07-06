@@ -23,7 +23,11 @@ export class JwtStrategy extends PassportStrategy(Strategy){
             throw new UnauthorizedException('Login first to access this endpoint');
         }
 
-        return user;
+        return {
+            userId: user._id,
+            email: user.email,
+            role: user.role,
+            };
         
     }
 }
