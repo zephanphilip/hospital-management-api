@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 
 @Module({
@@ -11,7 +11,13 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true, 
       envFilePath: '.env',
     }),
-    MongooseModule.forRoot('mongodb+srv://123:123@cluster0.ebfqvzu.mongodb.net/'),
+    MongooseModule.forRootAsync({
+      imports:[ConfigModule],
+      inject: [ConfigService],
+        useFactory:(configService: ConfigService)=>({
+          uri: configService.get<string>('MONG_URI'),
+        }),
+      }),
     AuthModule,
     UsersModule
   ],
