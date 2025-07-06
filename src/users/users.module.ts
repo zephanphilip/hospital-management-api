@@ -13,6 +13,6 @@ import { PatientsModule } from 'src/patients/patients.module';
   ],
   providers: [UsersService],
   controllers: [UsersController],
-  exports:[UsersService],
+  exports:[UsersService,MongooseModule],
 })
 export class UsersModule {}

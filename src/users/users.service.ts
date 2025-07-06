@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 import { SignUpDto } from './dto/signUp.dto';
 import { PatientsService } from 'src/patients/patients.service';
+import { Patient } from 'src/patients/patient.schema';
 
 @Injectable()
 export class UsersService {
@@ -29,6 +30,12 @@ export class UsersService {
 
     async findByEmailId(email: string): Promise<UserDocument | null> {
         return await this.userModel.findOne({email});
+    }
+
+    async removePatient(id:string): Promise<Patient>{
+        const patient = await this.patientservices.removePatientDetail(id)
+        await this.userModel.findByIdAndDelete(id)
+        return patient
     }
 }
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Param, Post, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { SignUpDto } from './dto/signUp.dto';
 import { AuthGuard } from '@nestjs/passport';
@@ -14,5 +14,12 @@ export class UsersController {
     @Roles('admin','doctor')
     async register(@Body() signupdto:SignUpDto){
         return this.userService.create(signupdto);
+    }
+
+    @Delete(':id')
+    @UseGuards(AuthGuard('jwt'),RolesGuard)
+    @Roles('admin')
+    removePatient(@Param('id') id:string){
+        return this.userService.removePatient(id)
     }
 }

@@ -1,4 +1,4 @@
-import { IsEmail, IsIn, IsNumber, IsString, MinLength } from "class-validator";
+import { IsEmail, IsIn, IsNumber, IsOptional, IsString, MinLength } from "class-validator";
 
 export class CreatePatientDto{
     @IsString()
@@ -12,4 +12,5 @@ export class CreatePatientDto{
    
     @IsNumber()
     contactNumber:number;
+
 }

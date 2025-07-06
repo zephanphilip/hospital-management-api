@@ -20,6 +20,9 @@ export class Patient{
 
     @Prop({required:true})
     contactNumber:number;
+
+    @Prop({})
+    specialNote:string;
 }
 
 export const PatientSchema = SchemaFactory.createForClass(Patient);
