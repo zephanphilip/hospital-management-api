@@ -14,6 +14,7 @@ export class DoctorsController {
     @Roles('doctor')
     getMyProfile(@Req() req:any){
         const userId = req.user.userId;
+        console.log('UserId:',userId)
         return this.doctorservices.findOne(userId)
     }
 

@@ -23,7 +23,7 @@ export class PatientsService {
     //used to fetch own profile using jwt
     async getByUserId(userId:string) : Promise<Patient>{
 
-        const patient = await this.patientModel.findOne({userId: userId.toString});
+        const patient = await this.patientModel.findOne({userId: userId.toString()});
 
         if (!patient) throw new NotFoundException('Patient profile not found');
         
@@ -32,7 +32,7 @@ export class PatientsService {
 
     //used by patient to update their own profile
     async update(userId:string, dto: UpdatePatientDto): Promise<Patient>{
-        const patient = await this.patientModel.findOneAndUpdate({userId: userId.toString},dto,{new:true});
+        const patient = await this.patientModel.findOneAndUpdate({userId: userId.toString()},dto,{new:true});
 
         if(!patient) throw new NotFoundException('Patient Not Found');
 
@@ -40,7 +40,7 @@ export class PatientsService {
     }
 
         async addSpecialNote(userId:string, specialNote:SpecialNoteDto): Promise<Patient>{
-        const patient = await this.patientModel.findOneAndUpdate({userId: userId.toString},{specialNote:specialNote.specialNote},{new:true});
+        const patient = await this.patientModel.findOneAndUpdate({userId: userId.toString()},{specialNote:specialNote.specialNote},{new:true});
 
         if(!patient) throw new NotFoundException('Patient Not Found');
 

@@ -26,14 +26,16 @@ export class DoctorsService {
     }
 
     async findOne(userId:string):Promise<Doctor>{
-        const existing=await this.doctorModel.findOne({userId})
+        console.log({ userId: userId.toString() });
+        const existing=await this.doctorModel.findOne({userId: userId.toString()})
+        console.log("Profile:",existing)
         if(!existing) throw new NotFoundException('Doctor Profile Does not Exist')
         return existing
     }
 
     //used by doctor to update their own profile
     async update(userId:string, dto: UpdateDoctorDto): Promise<Doctor>{
-            const doctor = await this.doctorModel.findOneAndUpdate({userId: userId.toString},dto,{new:true});
+            const doctor = await this.doctorModel.findOneAndUpdate({userId: userId.toString()},dto,{new:true});
     
             if(!doctor) throw new NotFoundException('Doctor Not Found');
     
