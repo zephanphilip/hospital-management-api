@@ -22,4 +22,5 @@ export class UsersController {
     removePatient(@Param('id') id:string){
         return this.userService.removePatient(id)
     }
+
 }

@@ -23,6 +23,10 @@ export class SignUpDto{
     gender:string;
     
     @IsOptional()
+    @IsString()
+    department:string;
+    
+    @IsOptional()
     @IsNumber()
     contactNumber:number;
 }
