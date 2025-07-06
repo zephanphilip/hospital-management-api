@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PatientsModule } from './patients/patients.module';
 import { DoctorsModule } from './doctors/doctors.module';
+import { AppointmentsModule } from './appointments/appointments.module';
 
 
 
@@ -25,6 +26,7 @@ import { DoctorsModule } from './doctors/doctors.module';
     UsersModule,
     PatientsModule,
     DoctorsModule,
+    AppointmentsModule,
 
   ],
   controllers: [],
