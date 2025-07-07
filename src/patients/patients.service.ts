@@ -39,6 +39,7 @@ export class PatientsService {
         return patient;
     }
 
+        //add special note to doctor 
         async addSpecialNote(userId:string, specialNote:SpecialNoteDto): Promise<Patient>{
         const patient = await this.patientModel.findOneAndUpdate({userId: userId.toString()},{specialNote:specialNote.specialNote},{new:true});
 
@@ -47,11 +48,13 @@ export class PatientsService {
         return patient;
     }
 
+    //get all patients
     async getAll(): Promise<Patient[]>{
         const patients = await this.patientModel.find().sort({createdAt:-1})
         return patients
     }
 
+    //remove patient used by user services
     async removePatientDetail(id:string): Promise<Patient>{
         const patient = await this.patientModel.findOne({userId:id})
         if(!patient) throw new NotFoundException('Patient Not Found');

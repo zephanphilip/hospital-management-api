@@ -11,12 +11,14 @@ import { Doctor, DoctorDocument } from 'src/doctors/doctor.schema';
 export class AppointmentsService {
     constructor(@InjectModel(Appointment.name) private appointmentModel:Model<AppointmentDocument>, @InjectModel(Doctor.name) private doctorModel:Model<DoctorDocument>, @InjectModel(Patient.name) private patientmodel:Model<PatientDocument>){}
 
+    //Book apooointment
     async bookAppointment(patientId:string,dto: CreateAppointmentDto):Promise<Appointment>{
         const patient = await this.patientmodel.findOne({userId:patientId.toString()})
         if (!patient) throw new NotFoundException('Patient profile not found');
         return await this.appointmentModel.create({doctorId: new Types.ObjectId(dto.doctorId),date:dto.date,patientId:patient._id});
     }
 
+    //Find own appointments 
     async findMyAppointment(user:any):Promise<any>{
         if(user.role === 'patient'){
             const patient = await this.patientmodel.findOne({userId:user.userId.toString()})
@@ -31,10 +33,12 @@ export class AppointmentsService {
         }
     }
 
+    //fetch all appointments
     async showAllAppointment():Promise<Appointment[]>{
         return await this.appointmentModel.find().sort({createdAt:-1})
     }
 
+    //update status for appointment
     async updateStatus(id:string, dto:UpdateAppointmentDto):Promise<Appointment>{
         const appointment = await this.appointmentModel.findByIdAndUpdate(id,dto,{new:true})
         if(!appointment)throw new NotFoundException('Appointment not found')

@@ -20,11 +20,12 @@ export class DoctorsService {
         return await this.doctorModel.create({...dto,userId})
     }
 
-
+    //find all doctors
     async findAll():Promise<Doctor[]>{
         return await this.doctorModel.find().sort({createdAt: -1})
     }
 
+    //find specific doctor
     async findOne(userId:string):Promise<Doctor>{
         console.log({ userId: userId.toString() });
         const existing=await this.doctorModel.findOne({userId: userId.toString()})
@@ -42,6 +43,7 @@ export class DoctorsService {
             return doctor;
     }
 
+    //remove doctor profile called from user services
     async removeDoctorProfile(id:string):Promise<Doctor>{
         const doctor = await this.doctorModel.findOne({userId:id})
         if(!doctor) throw new NotFoundException('Doctor Profile not Found');

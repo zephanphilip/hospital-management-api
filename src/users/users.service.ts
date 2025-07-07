@@ -12,6 +12,7 @@ import { DoctorsService } from 'src/doctors/doctors.service';
 export class UsersService {
     constructor(@InjectModel(User.name) private userModel: Model<UserDocument>,private patientservices:PatientsService, private doctorservices:DoctorsService){}
 
+    //register user as doctor or patient
     async create(signupdto:SignUpDto): Promise<User>{
         if(await this.userModel.findOne({email:signupdto.email})) throw new BadRequestException('Email already exists!');
         const hashed = await bcrypt.hash(signupdto.password,10);
@@ -45,7 +46,8 @@ export class UsersService {
         return await this.userModel.findOne({email});
     }
 
-    async removePatient(id:string): Promise<any>{
+    //remove user
+    async removeUser(id:string): Promise<any>{
         const user = await this.userModel.findById(id);
         if(!user)throw new NotFoundException('User does not Exist')
 

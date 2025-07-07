@@ -7,6 +7,7 @@ import { UsersService } from 'src/users/users.service';
 export class AuthService {
     constructor( private userServices:UsersService, private jwtServices:JwtService){}
 
+    //validate user
     async validateUser(email:string,password:string):Promise<any>{
         const user = await this.userServices.findByEmailId(email);
 
@@ -23,6 +24,7 @@ export class AuthService {
 
     }
 
+    //login user
     async login(user : any):Promise<{token: string}>{
         const payload = {email: user.email, sub: user._id, role:user.role}
         console.log('Payload:', payload);

@@ -107,6 +107,6 @@ export class UsersController {
   @Delete(':id')
   @Roles('admin')
   removePatient(@Param('id') id: string) {
-    return this.userService.removePatient(id);
+    return this.userService.removeUser(id);
   }
 }
