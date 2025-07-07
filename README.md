@@ -94,26 +94,19 @@ You can interact with the API using Swagger:
 ✅ Role-based access testing
 
 ---
-## 🛠️ Running Locally
-
-### 1. Clone the repo
-```bash
-git clone https://github.com/your-username/hospital-management-api.git
+Hospital Management API
+🛠️ Running Locally
+1. Clone the repo
+bashgit clone https://github.com/your-username/hospital-management-api.git
 cd hospital-management-api
 npm install
-
-### 2. Set up .env
-
-MONGO_URI=your_mongo_connection_string
+2. Set up .env
+envMONGO_URI=your_mongo_connection_string
 JWT_SECRET=your_secret_key
-
-### 3.Run the app
-```bash
-npm run start:dev
-
----
-
-## 👨‍💻 Author
+3. Run the app
+bashnpm run start:dev
+👨‍💻 Author
 Zephan Philip
-🔗 zephanphilip.github.io/PortfolioWebApp
-📧 zephanphilip03@gmail.com
+
+🔗 Portfolio: zephanphilip.github.io/PortfolioWebApp
+📧 Email: zephanphilip03@gmail.com
