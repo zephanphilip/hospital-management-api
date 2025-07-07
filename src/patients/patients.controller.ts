@@ -30,7 +30,7 @@ export class PatientsController {
   constructor(private readonly patientServices: PatientsService) {}
 
   @ApiOperation({
-    summary: 'Get profile of the logged-in patient',
+    summary: 'Get profile of the logged-in patient (Patient only)',
     description: 'Returns profile details for the currently logged-in patient.',
   })
   @ApiResponse({
@@ -45,7 +45,7 @@ export class PatientsController {
   }
 
   @ApiOperation({
-    summary: 'Update profile of the logged-in patient',
+    summary: 'Update profile of the logged-in patient (Patient only)',
     description: 'Allows a patient to update their personal details.',
   })
   @ApiBody({

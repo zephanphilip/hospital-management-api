@@ -29,7 +29,7 @@ export class DoctorsController {
   constructor(private readonly doctorservices: DoctorsService) {}
 
   @ApiOperation({
-    summary: 'Get profile of the logged-in doctor',
+    summary: 'Get profile of the logged-in doctor (Doctor only)',
     description: 'Returns profile details of the currently logged-in doctor.',
   })
   @ApiResponse({
@@ -45,7 +45,7 @@ export class DoctorsController {
   }
 
   @ApiOperation({
-    summary: 'Update profile of the logged-in doctor',
+    summary: 'Update profile of the logged-in doctor (Doctor only)',
     description:
       'Allows a doctor to update their personal or professional information.',
   })
